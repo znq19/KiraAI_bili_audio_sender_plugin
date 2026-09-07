@@ -273,7 +273,7 @@ class BiliAudioSenderPlugin(BasePlugin):
             return
         note = (
             f"\n[系统提示：该链接（《{sent['title']}》）"
-            f"已自动转为语音条（{sent['file_rel']}）]"
+            f"已自动转为语音条发送（{sent['file_rel']}）]"
         )
         # 按顺序遍历 messages ↔ user_prompt，定位原始链接消息追加 note
         prompt_idx = 0
