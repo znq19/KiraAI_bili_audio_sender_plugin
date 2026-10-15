@@ -224,7 +224,7 @@ class BiliAudioSenderPlugin(BasePlugin):
         if not any(text == c or text.startswith(c + " ") for c in self.command_words):
             return
         if not self._is_allowed_event(event):
-            await self.ctx.message_processor.send_message_chain(
+            await self.ctx.send_message_chain(
                 event.session.sid, MessageChain([Text(self.permission_denied_message)]))
             event.discard(force=True)
             event.stop()
@@ -239,7 +239,7 @@ class BiliAudioSenderPlugin(BasePlugin):
             logger.exception("[bili_audio_sender] command failed")
             reply = f"点歌失败：{e}"
         # 命令式路径直接把结果（候选/错误/确认）发给用户
-        await self.ctx.message_processor.send_message_chain(
+        await self.ctx.send_message_chain(
             event.session.sid, MessageChain([Text(reply)]))
         event.discard(force=True)
         event.stop()
@@ -270,10 +270,10 @@ class BiliAudioSenderPlugin(BasePlugin):
                 }
             else:
                 # 失败（时长超限等）→ 补发文字提示，不记录 auto_sent
-                await self.ctx.message_processor.send_message_chain(
+                await self.ctx.send_message_chain(
                     event.session.sid, MessageChain([Text(reply)]))
         except bili_dl.BiliError as e:
-            await self.ctx.message_processor.send_message_chain(
+            await self.ctx.send_message_chain(
                 event.session.sid, MessageChain([Text(f"下载失败：{e}")]))
         except Exception:
             logger.exception("[bili_audio_sender] link hook failed")
@@ -350,7 +350,7 @@ class BiliAudioSenderPlugin(BasePlugin):
                                              proxy_mode=self.proxy_mode)
         title, duration, desc = info["title"], info["duration"], info["desc"]
         chain = MessageChain([Record(record=str(path), name=Path(path).name)])
-        result = await self.ctx.message_processor.send_message_chain(sid, chain)
+        result = await self.ctx.send_message_chain(sid, chain)
         err = str(result.err or "") if not result.ok else ""
         # NapCat 长语音发送可能报"超时"但消息实际已送达：超时不当失败报给 LLM，仅记日志
         if not result.ok and "超时" not in err:

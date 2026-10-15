@@ -1,4 +1,4 @@
-# 🎵 B站音频语音条点歌（bili_audio_sender）v1.1.3
+# 🎵 B站音频语音条点歌（bili_audio_sender）v1.1.4
 
 一个给 **KiraAI** 机器人用的插件：把 **B 站视频的音频**下载下来，直接发成 **QQ 语音条**。
 
@@ -135,6 +135,10 @@ A：刻意做得很省。丢链接直发完全不经过 AI（0 token）；自然
 
 <details>
 <summary>📝 更新日志（点击展开）</summary>
+
+**v1.1.4**
+
+- 兼容 KiraAI 3.0 GA 弃用面：5 处 `ctx.message_processor.send_message_chain` → `ctx.send_message_chain`（两代等价）。零行为变化。
 
 **v1.1.3**
 - **放行 QQ 官方机器人（`QQ Official` 平台）**：原来只认 OneBot 系的 `"QQ"`，官方 bot 三个入口都不触发；
