@@ -1,9 +1,9 @@
 {
   "plugin_id": "bili_audio_sender",
   "display_name": "B站音频语音条点歌",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "author": "znq19",
-  "description": "下载B站视频音频并以QQ语音条发送：LLM自然语言点歌、/点歌命令词、B站链接自动转语音三入口，支持 QQ 官方机器人；官方API+WBI签名降级，内置缓存与白名单。",
+  "description": "下载B站视频音频并以语音条发送：LLM自然语言点歌、/点歌命令词、B站链接自动转语音三入口；支持 QQ / QQ 官方 / Telegram / Discord / WebChat 等声明 record 的适配器（官方需 qqbot-fullmsg-bridge）；链接自动发送为非阻塞、支持 b23 短链与小程序卡片，内置缓存与白名单。",
   "repo": "https://github.com/znq19/KiraAI_bili_audio_sender_plugin",
   "core_version": ">=2.6.1",
   "icon": "icon.png"
