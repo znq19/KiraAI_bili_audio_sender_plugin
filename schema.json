@@ -31,13 +31,7 @@
         "type": "switch",
         "name": "链接自动转语音",
         "default": false,
-        "hint": "收到含B站链接+下载意图的消息时不经AI直接下载发送(0 token)。原始消息不被discard，继续进入LLM上下文，并注入系统提示标注已直发。"
-      },
-      "strict_intent": {
-        "type": "switch",
-        "name": "严格意图校验",
-        "default": true,
-        "hint": "链接钩子需消息含 下载/语音/音频 等意图词才拦截，防误伤普通聊天。"
+        "hint": "收到含B站链接（含 b23 短链、QQ 小程序卡片）的消息时，不经AI直接下载并发送语音条(0 token)，不再要求意图词。原始消息不被discard，继续进入LLM上下文，并注入系统提示标注已直发。"
       }
     }
   },
